@@ -1,12 +1,14 @@
 
-This project deploys a k3s cluster onto my Raspberry PI 4B which runs AlmaLinux as its OS. 
+This project deploys an application on a k3s cluster onto my Raspberry PI 4B which runs AlmaLinux as its OS. 
+
+So, I have installed AlmaLinux on this bear metal, on top of which I installed k3s & running a one-node cluster there. (In near future, when I received my 2nd PI, I will setup a multi-node cluster on bear metal PIs)  
 ![My PI 4](readme-meta/my-pi4.png)
 
-The purpose this project is to demonstrate how we could decouple the TLS certificate management from Ingress Controller like Traefik. 
+The purpose of this project is to demonstrate how we could decouple the TLS certificate management from Ingress Controller (e.g. Traefik). This strategy can be applied to k3s, k8s clusters running on bear metal or cloud hosted.
 
 The benefits are:
 
-- If needed to swtich to different Ingress Controllers,we would not need to re-issue the TLS certificates for applications running in the cluster.
+- With a deployed k8s/k3s cluster, if needed to swtich to a different Ingress Controller, we would not need to re-issue the TLS certificates for applications running in the cluster.
 
 - TLS certificates can be automatically renewed with the use of [Cert-manager](https://cert-manager.io)
 
