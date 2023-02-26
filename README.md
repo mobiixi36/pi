@@ -1,5 +1,5 @@
 
-This project deploys an application on a **k3s cluster** onto my bare metal Raspberry PI 4B. 
+This project deploys an application onto a **k3s cluster** running on my bare metal Raspberry PI 4B. 
 
 So, I have installed AlmaLinux as the OS on this bare metal, on top of which I installed k3s & running a one-node cluster there. (In near future, when I received my 2nd PI, I will setup a multi-node cluster on bare metal PIs)  
 ![My PI 4](readme-meta/my-pi4.png)
