@@ -4,7 +4,8 @@ This project deploys an application on a **k3s cluster** onto my bare metal Rasp
 So, I have installed AlmaLinux as the OS on this bare metal, on top of which I installed k3s & running a one-node cluster there. (In near future, when I received my 2nd PI, I will setup a multi-node cluster on bare metal PIs)  
 ![My PI 4](readme-meta/my-pi4.png)
 
-![My PI 4](readme-meta/pi-node.png)
+The single PI node:
+![PI node](readme-meta/pi-node.png)
 
 The purpose of this project is to demonstrate how we could decouple the TLS certificate management from Ingress Controller (e.g. Traefik). This strategy can be applied to **k3s**, **k8s** clusters running on bare metal or cloud hosted.
 
@@ -19,11 +20,21 @@ The benefits are:
 
 This project uses [Cert-manager](https://cert-manager.io/docs/) to manage TLS certificate for TLS traffic enabling.
 
-Deploying in following order:
+Deploying in the following order:
 1. cert-mgr/cert-manager.yaml
 2. cert-mgr/issuer-<stg/prod>.yaml
 3. ingress/ingress.yaml
 4. Depending on whether the "issuer" annotation mentioned below is enabled or not, deciding whether deploys Certificate yaml.
+
+Deploy the demo app by:
+`k apply -f demo-app-depl.yaml`
+
+The `Traefik` **Ingress Controller** associated **Load Balancer** service receives an external IP: 
+![LB service](readme-meta/lb.png)
+
+Mapping the external IP with a hostname in `/etc/hosts` on my MacBook, after which, I can access the application via https://cows.com :
+![hosts](readme-meta/hosts.png)
+
 
 #### To check the live logs of cert-manager pod
 `> k logs -n cert-manager -f <cert-manager pod name>`
