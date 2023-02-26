@@ -7,7 +7,7 @@ Well, not completely bare metal, I have installed AlmaLinux as the OS on this ba
 The single PI node:
 ![PI node](readme-meta/pi-node.png)
 
-The purpose of this project is to demonstrate how we could decouple the TLS certificate management from Ingress Controller (e.g. Traefik). This strategy can be applied to **k3s**, **k8s** clusters running on bare metal or cloud hosted.
+The purpose of this project is to demonstrate how we could decouple the TLS certificate management from Ingress Controller (e.g. Traefik). This strategy can be applied to **k3s**, **k8s** clusters running on-premises or cloud hosted.
 
 The benefits are:
 
