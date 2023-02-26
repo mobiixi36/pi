@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cows
+  namespace: pi
+  annotations:
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/ingress.class: "traefik"
+    # add an annotation indicating the issuer to use.
+    #cert-manager.io/cluster-issuer: letsencrypt-staging
+    acme.cert-manager.io/http01-edit-in-place: "true"
+spec:
+  tls:
+  - secretName: my-pi-cert01 # the secret specified in Certificate.yaml
+    hosts:
+    - cows.com
+  rules:
+  - host: cows.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: demo-app-svc 
+            port:
+              number: 31113
+

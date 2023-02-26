@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: my-pi-cert-prod
+  namespace: pi
+spec:
+  commonName: cows.com
+  secretName: my-pi-cert02 # the secret where the issued cert stores in
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - cows.com
